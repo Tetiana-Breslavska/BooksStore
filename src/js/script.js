@@ -68,14 +68,12 @@
             }
           }
         }
-       
         console.log(favoriteBooks);
       }
     });
 
     const filtersDom = document.querySelector(select.containerOf.filters);
     filtersDom.addEventListener('click', function (event) {
-    //   event.preventDefault();
       const checkboxObject = event.target;
       console.log(checkboxObject.getAttribute('value'));
 
@@ -85,7 +83,6 @@
       {
         if (checkboxObject.checked === true && !filters.includes(checkboxObject.getAttribute('value'))){ 
           filters.push(checkboxObject.getAttribute('value'));
-           
         }
         else {
           let index = filters.indexOf(checkboxObject.getAttribute('value'));
@@ -95,24 +92,26 @@
         }
       }
       console.log(filters);
-    //   hiddenBook();
+      filterBooks();
+      
     });
     
   }
 
-  function hiddenBook(){
+  function filterBooks(){
     for (const book of dataSource.books){
-        for (const filtersId of filters){
-            
-            let bookDetails = 
-            if (book.details.)
+      const bookDomFilteroff = document.querySelector(`[data-id="${book.id}"]`);
+      bookDomFilteroff.classList.remove('hidden');
+      for (const filtersId of filters){
+        let bookDetails = book.details.adults ? 'adults' : book.details.nonFiction ? 'nonFiction':'noDetails';
+        console.log(book, bookDetails);
+        if (filtersId !== bookDetails ){
+          bookDomFilteroff.classList.add('hidden');
         }
+      }
     }
   }
   initActions();
-
-  
- 
   
 }
 
