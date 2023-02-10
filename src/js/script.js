@@ -123,9 +123,6 @@
     if (argRating > 9) backgroundStyle  = 'linear-gradient(to bottom, #ff0084 0%,#ff0084 100%)';
     return backgroundStyle;
   }
-
-
-
   initActions();
   
 }
