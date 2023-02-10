@@ -23,6 +23,9 @@
 
   function displayBooks() {
     for (const book of dataSource.books) {
+      book.ratingBgc = determinRatingBgc(book.rating); 
+      book.ratingWidth = book.rating * 10;
+      
       /* generate HTML based on template*/
       const generatedHTML = templates.books(book);
             
@@ -37,7 +40,7 @@
       booksContainer.appendChild(domElement);
     }    
   }
-
+  
   displayBooks();
 
   const favoriteBooks = [];
@@ -111,6 +114,18 @@
       }
     }
   }
+
+  function determinRatingBgc(argRating ){
+    let backgroundStyle;
+    if (argRating < 6) backgroundStyle = 'linear-gradient(to bottom,  #fefcea 0%, #f1da36 100%)';
+    if (argRating > 6 && argRating <= 8) backgroundStyle = 'linear-gradient(to bottom, #b4df5b 0%,#b4df5b 100%)';
+    if (argRating > 8 && argRating <= 9) backgroundStyle ='linear-gradient(to bottom, #299a0b 0%, #299a0b 100%)';
+    if (argRating > 9) backgroundStyle  = 'linear-gradient(to bottom, #ff0084 0%,#ff0084 100%)';
+    return backgroundStyle;
+  }
+
+
+
   initActions();
   
 }
