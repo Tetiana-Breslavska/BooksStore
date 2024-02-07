@@ -136,6 +136,7 @@
   
   }
   const app = new BooksList();
+  app();
     
 }
 
